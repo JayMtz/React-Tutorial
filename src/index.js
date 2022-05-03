@@ -10,11 +10,11 @@ class Square extends React.Component {
     }
     render() {
       return (
-        <button className="sqaure" onClick={() => console.log('click')}> 
-          {/* the above button tag now keeps track and logs clicks in dev console */}
+        <button className="sqaure" onClick={() => this.setState({value: 'X'})}> 
+          {/* the above button tag now keeps track and shows X's when clicked */}
           {/* changed the button tag to use arrow functions */}
           {
-              this.props.value //this line is what makes the numbers render
+              this.state.value // makes the X render when clicked
           } 
         </button>
       );
