@@ -5,8 +5,9 @@ import './index.css';
 class Square extends React.Component {
     render() {
       return (
-        <button className="square" onClick={function(){console.log('click');}}> 
+        <button className="sqaure" onClick={() => console.log('click')}> 
           {/* the above button tag now keeps track and logs clicks in dev console */}
+          {/* changed the button tag to use arrow functions */}
           {
               this.props.value //this line is what makes the numbers render
           } 
