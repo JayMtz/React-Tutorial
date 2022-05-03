@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
+
 
 class Square extends React.Component {
     //adding a constructor to initialize the state of square 
@@ -10,12 +11,12 @@ class Square extends React.Component {
     }
     render() {
       return (
-        <button className="sqaure" onClick={() => this.setState({value: 'X'})}> 
-          {/* the above button tag now keeps track and shows X's when clicked */}
-          {/* changed the button tag to use arrow functions */}
-          {
-              this.state.value // makes the X render when clicked
-          } 
+        <button 
+            className="sqaure" 
+            onClick={() => this.setState({value: 'X'})} // the above button tag now keeps track and shows X's when clicked
+        > 
+
+          {this.state.value} {/* makes the X render when clicked */}
         </button>
       );
     }
