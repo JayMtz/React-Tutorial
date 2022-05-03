@@ -5,15 +5,16 @@ import './index.css';
 class Square extends React.Component {
     render() {
       return (
-        <button className="square">
+        <button className="square" onClick={function(){console.log('click');}}> 
+          {/* the above button tag now keeps track and logs clicks in dev console */}
           {
               this.props.value //this line is what makes the numbers render
-          }
+          } 
         </button>
       );
     }
   }
-  
+
   class Board extends React.Component {
     renderSquare(i) {
       return <Square value={i} />; // passing prop 'value' to square
@@ -26,7 +27,7 @@ class Square extends React.Component {
         <div>
           <div className="status">{status}</div>
           <div className="board-row">
-            {this.renderSquare(0)}
+            {this.renderSquare(0)} 
             {this.renderSquare(1)}
             {this.renderSquare(2)}
           </div>
