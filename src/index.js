@@ -7,7 +7,7 @@ class Square extends React.Component {
       return (
         <button className="square">
           {
-              this.props.value
+              this.props.value //this line is what makes the numbers render
           }
         </button>
       );
@@ -16,7 +16,7 @@ class Square extends React.Component {
   
   class Board extends React.Component {
     renderSquare(i) {
-      return <Square value={i} />;
+      return <Square value={i} />; // passing prop 'value' to square
     }
   
     render() {
