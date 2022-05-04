@@ -46,6 +46,9 @@ function Square(props) {
     //handle click assigns 'X' to square when its clicked and saves state within board component
     handleClick(i){
         const squares = this.state.squares.slice(); // slice copys squares array instead of modifying oringinal
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        } //if statement to ignore click if somone won a game 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             squares: squares,
@@ -64,13 +67,14 @@ function Square(props) {
     }
   
     render() {
-      const winner = calculateWinner(this,this.state.squares);
-      let status;
-      if(winner){
-          status = 'Winner: ' +  winner;
-      } else {
+        const winner = calculateWinner(this.state.squares);
+        let status;
+        if(winner){
+            status = 'Winner: ' +  winner;
+        } 
+        else {
           status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-      }
+        }
   
       return (
         <div>
