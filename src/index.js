@@ -24,8 +24,11 @@ function Square(props) {
     //handle click assigns 'X' to square when its clicked and saves state within board component
     handleClick(i){
         const squares = this.state.squares.slice(); // slice copys squares array instead of modifying oringinal
-        squares[i] = 'X';
-        this.setState({squares: squares});
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        this.setState({
+            squares: squares,
+            xIsNext: !this.state.xIsNext,
+        });
     }
 
     renderSquare(i) {
