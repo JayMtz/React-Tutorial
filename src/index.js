@@ -2,21 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-
-class Square extends React.Component {
-    
-    
-    render() {
+//this square function component is a controlled component by Board 
+function Square(props) {    
       return (
-        <button 
-            className="square" 
-            onClick={() => this.props.onClick()} // the above button tag now keeps track and shows X's when clicked
-        > 
-
-          {this.props.value} {/* makes the X render when clicked */}
-        </button>
+        <button className='square' onClick={props.onClick}>
+        {props.value}
+        </button> 
       );
-    }
+    
   }
 
   class Board extends React.Component {
@@ -27,9 +20,9 @@ class Square extends React.Component {
               squares: Array(9).fill(null)
           };
     }
-    //handle click assigns 'X' to square when its clicked
+    //handle click assigns 'X' to square when its clicked and saves state within board component
     handleClick(i){
-        const squares = this.state.squares.slice();
+        const squares = this.state.squares.slice(); // slice copys squares array instead of modifying oringinal
         squares[i] = 'X';
         this.setState({squares: squares});
     }
