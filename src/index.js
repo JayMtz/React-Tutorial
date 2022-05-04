@@ -17,7 +17,8 @@ function Square(props) {
     constructor(props){ 
           super(props);
           this.state={
-              squares: Array(9).fill(null)
+              squares: Array(9).fill(null),
+              xIsNext: true, //setting default turn state to 'X'
           };
     }
     //handle click assigns 'X' to square when its clicked and saves state within board component
