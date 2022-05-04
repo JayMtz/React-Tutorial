@@ -4,19 +4,16 @@ import './index.css';
 
 
 class Square extends React.Component {
-    //adding a constructor to initialize the state of square 
-    constructor(props){
-        super(props);
-        this.state = {value: null};
-    }
+    
+    
     render() {
       return (
         <button 
-            className="sqaure" 
-            onClick={() => this.setState({value: 'X'})} // the above button tag now keeps track and shows X's when clicked
+            className="square" 
+            onClick={() => this.props.onClick()} // the above button tag now keeps track and shows X's when clicked
         > 
 
-          {this.state.value} {/* makes the X render when clicked */}
+          {this.props.value} {/* makes the X render when clicked */}
         </button>
       );
     }
@@ -31,7 +28,13 @@ class Square extends React.Component {
           };
       }
     renderSquare(i) {
-      return <Square value={i} />; // passing prop 'value' to square
+      return  (
+            <Square 
+                value={this.state.squares[i]}
+                onClick={() => this.handleClick(i)}
+             />// value prop will show state of square ( X,0, or null)
+               // onClick function prop will pass to Square  to be called when square is clicked
+      );
     }
   
     render() {
