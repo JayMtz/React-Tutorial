@@ -35,14 +35,7 @@ function Square(props) {
   }
 
   class Board extends React.Component {
-    //   sets boards intial state to contain array of 9 nulls to the 9 squares
-    constructor(props){ 
-          super(props);
-          this.state={
-              squares: Array(9).fill(null),
-              xIsNext: true, //setting default turn state to 'X'
-          };
-    }
+    
     //handle click assigns 'X' to square when its clicked and saves state within board component
     handleClick(i){
         const squares = this.state.squares.slice(); // slice copys squares array instead of modifying oringinal
@@ -59,8 +52,8 @@ function Square(props) {
     renderSquare(i) {
       return  (
             <Square 
-                value={this.state.squares[i]}
-                onClick={() => this.handleClick(i)}
+                value={this.props.squares[i]}
+                onClick={() => this.props.onClick(i)}
              />// value prop will show state of square ( X,0, or null)
                // onClick  function prop will pass to Square  to be called when square is clicked
       );
