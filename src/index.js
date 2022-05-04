@@ -21,19 +21,26 @@ class Square extends React.Component {
 
   class Board extends React.Component {
     //   sets boards intial state to contain array of 9 nulls to the 9 squares
-      constructor(props){ 
+    constructor(props){ 
           super(props);
           this.state={
               squares: Array(9).fill(null)
           };
-      }
+    }
+    //handle click assigns 'X' to square when its clicked
+    handleClick(i){
+        const squares = this.state.squares.slice();
+        squares[i] = 'X';
+        this.setState({squares: squares});
+    }
+
     renderSquare(i) {
       return  (
             <Square 
                 value={this.state.squares[i]}
                 onClick={() => this.handleClick(i)}
              />// value prop will show state of square ( X,0, or null)
-               // onClick function prop will pass to Square  to be called when square is clicked
+               // onClick  function prop will pass to Square  to be called when square is clicked
       );
     }
   
