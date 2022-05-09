@@ -74,6 +74,7 @@ function Square(props) {
         super(props);
         this.state = {
             history: [{
+                stepNumber: 0,
                 squares: Array(9).fill(null)
             }],
             xIsNext: true,
