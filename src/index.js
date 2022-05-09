@@ -104,14 +104,14 @@ function Square(props) {
         const winner = calculateWinner(current.squares);
 
         //mapping game history 
-        const moves = history.map((step, moveBy) => {
-            const desc = moves ?
-                'Go to move #' + moves :
+        const moves = history.map((step, move) => {
+            const desc = move ?
+                'Go to move #' + move :
                 'Go to game start';
             return (
                 <li>
-                    <button onclick={() =>
-                this.jumpTo(moves)}></button>
+                    <button onClick={() =>
+                this.jumpTo(moves)}>{desc}</button>
                 </li>
             );
 
@@ -133,7 +133,7 @@ function Square(props) {
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{/moves}</ol>
+            <ol>{moves}</ol>
           </div>
         </div>
       );
