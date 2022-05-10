@@ -74,16 +74,18 @@ function Square(props) {
         super(props);
         this.state = {
             history: [{
-                stepNumber: 0,
                 squares: Array(9).fill(null)
             }],
+            stepNumber: 0,
             xIsNext: true,
         };
     }
 
      //handle click assigns 'X' to square when its clicked and saves state within board component
      handleClick(i){
-        const history = this.state.history;
+        const history = this.state.history.slice(0,
+            this.state.stepNumber + 1
+        );
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
@@ -94,14 +96,22 @@ function Square(props) {
             history: history.concat ([{
                 squares: squares,
             }]),
+            stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
         });
     }
 
+    //jumpTo will update stepNumber in and check to even stepNumber
+    jumpTo(step) {
+        this.setState({
+            stepNumber: step,
+            xIsNext: (step % 2) === 0,
+        });
+    }
 
     render() {
         const history = this.state.history;
-        const current = history[history.length - 1];
+        const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
         //mapping game history 
@@ -112,7 +122,7 @@ function Square(props) {
             return (
                 <li key={move}>
                     <button onClick={() =>
-                this.jumpTo(moves)}>{desc}</button>
+                this.jumpTo(move)}>{desc}</button>
                 </li>
             );
 
